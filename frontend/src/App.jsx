@@ -26,6 +26,8 @@ function App() {
       <ItemList items={tasks} onRefresh={fetchTasks} />
     </div>
   );
+    
 }
+
 
 export default App;

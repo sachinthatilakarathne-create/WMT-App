@@ -3,6 +3,7 @@ import { createTask } from "../api/api";
 
 function ItemForm({ onItemAdded }) {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,8 +11,9 @@ function ItemForm({ onItemAdded }) {
     if (!title.trim()) return;
 
     try {
-      await createTask({ title });
+      await createTask({ title, description });
       setTitle("");
+      setDescription("");
       onItemAdded();
     } catch (error) {
       console.error("Add Error:", error);
@@ -26,9 +28,19 @@ function ItemForm({ onItemAdded }) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <br />
+      <input
+        type="text"
+        placeholder="Enter description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <br />
       <button type="submit">Add Task</button>
     </form>
   );
 }
+
+
 
 export default ItemForm;
