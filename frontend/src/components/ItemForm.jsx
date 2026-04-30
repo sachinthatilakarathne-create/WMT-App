@@ -83,6 +83,10 @@ function ItemForm({ onItemAdded }) {
           />
           <button type="submit">Add Description</button>
         </form>
+      ):(
+        <form onSubmit="{}">
+          <input type="text" />
+        </form>
       )}
     </div>
   );
